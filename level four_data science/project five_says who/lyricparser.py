@@ -12,6 +12,9 @@ class LyricParser():
     """
     This class parses lyrics.txt and provides useful tools to analyze it.
 
+    For preprocessing, the class depunctuates, lowercases, and stemifies the lyrics.
+
+
     Parameters
     ----------
     input_path : str, Path
