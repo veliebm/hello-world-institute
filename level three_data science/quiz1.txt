@@ -1,0 +1,20 @@
+title:Which Hello World Instructor Are You?
+q1:What is your favorite color?
+a11:red:Val:1
+a12:blue:Skye:1
+a13:orange:Reed:1
+a14:green:Ms. B:1
+q2:Pick an animal
+a21:beagle:Ms. B:1
+a22:velociraptor:Val:1
+a23:rabbit:Reed:1
+a24:scottie:Skye:1
+q3:Pick a quote
+a31:Look on the bright side:Reed:1
+a32:<strange noises>:Skye:1
+a33:Sure I know about that:Val:1
+a34:THIS IS AMAAAAZINGGGGG:Ms. B:1
+result_Val:You know a little bit of everything and never hesitate to help a friend. Have you thought about dyeing your hair?
+result_Skye:You are very thoughtful and can usually come up with a creative solution to any problem. Sometimes you make funny sounds.
+result_Ms. B:You have endless energy and make sure everyone is heard in a discussion. You have the power to take dreams and make them real.
+result_Reed:You are a careful planner and are usually juggling a few things at all times. You cannot resist a bad joke.

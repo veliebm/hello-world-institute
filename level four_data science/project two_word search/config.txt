@@ -1,0 +1,11 @@
+20
+20
+red
+HELLO
+yellow
+orange
+purple
+grey
+black
+white
+                    
