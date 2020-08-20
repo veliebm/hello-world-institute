@@ -6,7 +6,7 @@ veliebm@gmail.com
 """
 
 import pathlib
-
+import nltk.stem
 
 class LyricParser():
     """
@@ -47,9 +47,13 @@ class LyricParser():
         raw_lyrics = [line.split("\t")[1] for line in lines if artist in line]
 
         # Remove caps and punctuation
-        depunctuated_lowercased_lyrics = [self._depunctuate(lyric).lower() for lyric in raw_lyrics]        
+        depunctuated_lowercased_lyrics = [self._depunctuate(lyric).lower() for lyric in raw_lyrics]    
 
-        return depunctuated_lowercased_lyrics
+        # Destem the words.
+        stemmer = nltk.stem.PorterStemmer()
+        stemmed_lyrics = [stemmer.stem(lyric) for lyric in depunctuated_lowercased_lyrics]
+
+        return stemmed_lyrics
 
 
     def _depunctuate(self, lyric: str) -> str:
