@@ -8,6 +8,7 @@ veliebm@gmail.com
 import pathlib
 import nltk.stem
 import sklearn
+import pandas
 
 
 class LyricParser():
@@ -28,10 +29,10 @@ class LyricParser():
     ----------
     path : Path
         Path to the lyrics file.
-    taylor : list of strings
-        List of all PREPROCESSED lyrics in the file for Taylor Swift.
-    beatles : list of strings
-        List of all PREPROCESSED lyrics in the file for the Beatles.
+    taylor : DataFrame of strings
+        DataFrame of all PREPROCESSED lyrics in the file for Taylor Swift.
+    beatles : DataFrame of strings
+        DataFrame of all PREPROCESSED lyrics in the file for the Beatles.
     """
 
     def __init__(self, input_path):
@@ -43,11 +44,11 @@ class LyricParser():
 
         self.taylor_train_dev, self.taylor_test = self.split(self.taylor)
         self.beatles_train_dev, self.beatles_test = self.split(self.beatles)
-        
+
     
     def lyrics(self, artist):
         """
-        Returns a list of all lyrics from the text file for an artist.
+        Returns a dataframe of all lyrics from the text file for an artist.
         """
 
         # Get raw, unedited lyrics for the artist.
@@ -61,7 +62,7 @@ class LyricParser():
         stemmer = nltk.stem.PorterStemmer()
         stemmed_lyrics = [stemmer.stem(lyric) for lyric in depunctuated_lowercased_lyrics]
 
-        return stemmed_lyrics
+        return pandas.DataFrame(stemmed_lyrics)
 
 
     def split(self, sequence) -> tuple:
