@@ -61,7 +61,7 @@ class LyricParser():
         return stemmed_lyrics
 
 
-    def split(self, sequence):
+    def split(self, sequence) -> tuple:
         """
         Returns a training set, a dev set, and a test set for the input sequence of data.
 
