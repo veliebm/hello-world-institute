@@ -41,6 +41,9 @@ class LyricParser():
         self.taylor = self.lyrics("taylor_swift")
         self.beatles = self.lyrics("the_beatles")
 
+        self.taylor_train_dev, self.taylor_test = self.split(self.taylor)
+        self.beatles_train_dev, self.beatles_test = self.split(self.beatles)
+        
     
     def lyrics(self, artist):
         """
@@ -63,17 +66,15 @@ class LyricParser():
 
     def split(self, sequence) -> tuple:
         """
-        Returns a training set, a dev set, and a test set for the input sequence of data.
+        Returns a mixed training/dev set, and a test set for the input sequence of data.
 
         Allowed inputs are lists, numpy arrays, scipy-sparse matrices or pandas dataframes.
-        Training set encompasses 80% of the data, and the dev and test set each encompass 10% of the data.
+        Training/dev set encompasses 90% of the data, and test set encompasses 10% of the data.
         """
 
-        training, dev_test = sklearn.model_selection.train_test_split(sequence, train_size=.8)
+        training_dev, test = sklearn.model_selection.train_test_split(sequence, train_size=.9)
 
-        dev, test = sklearn.model_selection.train_test_split(dev_test, test_size=.5)
-
-        return training, dev, test
+        return training_dev, test
 
 
     def _depunctuate(self, lyric: str) -> str:
