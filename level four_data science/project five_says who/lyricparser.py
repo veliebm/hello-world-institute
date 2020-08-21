@@ -32,12 +32,6 @@ class LyricParser():
         List of all PREPROCESSED lyrics in the file for Taylor Swift.
     beatles : list of strings
         List of all PREPROCESSED lyrics in the file for the Beatles.
-    taylor_train, beatles_train : list of strings
-        Training data for an AI, each encompassing 80% of the initial datasets.
-    taylor_dev, beatles_dev : list of strings
-        Dev data for an AI, each encompassing 10% of the initial datasets.
-    taylor_test, beatles_test : list of strings
-        Test data for an AI, each encompassing 10% of the initial datasets.
     """
 
     def __init__(self, input_path):
@@ -47,9 +41,6 @@ class LyricParser():
         self.taylor = self.lyrics("taylor_swift")
         self.beatles = self.lyrics("the_beatles")
 
-        self.taylor_train, self.taylor_dev, self.taylor_test = self.split(self.taylor)
-        self.beatles_train, self.beatles_dev, self.beatles_test = self.split(self.beatles)
-        
     
     def lyrics(self, artist):
         """
