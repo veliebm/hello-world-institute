@@ -9,24 +9,24 @@ veliebm@gmail.com
 
 from trie import Trie
 
+
 SEARCH_PATH = "my_history.txt"
 
+# Access the search history.
+with open(SEARCH_PATH, "r", encoding="UTF-8") as search_file:
+    contents = search_file.read()
+    phrase_list = [phrase.split(" ") for phrase in contents.splitlines()]
+    word_list = contents.replace("\n", "").split(" ")
 
-def main():
+# Store the search history in Tries.
+PHRASE_TRIE = Trie("!!PHRASES!!")
+WORD_TRIE = Trie("!!WORDS!!")
 
-    with open(SEARCH_PATH, "r", encoding="UTF-8") as search_file:
-        contents = search_file.read()
-        phrase_list = [phrase.split(" ") for phrase in contents.splitlines()]
-        word_list = contents.replace("\n", "").split(" ")
+for phrase in phrase_list:
+    PHRASE_TRIE.store(phrase)
 
-    phrase_trie = Trie("!!PHRASES!!")
-    word_trie = Trie("!!WORDS!!")
-
-    for phrase in phrase_list:
-        phrase_trie.store(phrase)
-
-    for word in word_list:
-        word_trie.store(word)
+for word in word_list:
+    WORD_TRIE.store(word)
 
 
 if __name__ == "__main__":
