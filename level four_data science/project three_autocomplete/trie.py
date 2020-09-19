@@ -35,10 +35,10 @@ class Trie:
         child_values = {child.value for child in self}
 
         if self.parent:
-            return f"Parent: {self.parent.value}. Value: {self.value}. Count: {self.count}. Child values: {child_values}."
+            return f"Value: {self.value}. Count: {self.count}. Parent: {self.parent.value}. Child values: {child_values}."
 
         else:
-            return f"Parent: ROOT. Value: {self.value}. Count: {self.count}. Child values: {child_values}."
+            return f"Value: {self.value}. Count: {self.count}. Parent: ROOT. Child values: {child_values}."
 
 
     def __getitem__(self, value):
