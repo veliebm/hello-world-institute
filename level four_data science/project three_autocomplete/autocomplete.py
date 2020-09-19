@@ -12,6 +12,8 @@ from trie import Trie
 
 SEARCH_PATH = "my_history.txt"
 
+print(f"Accessing {SEARCH_PATH}...")
+
 # Access the search history.
 with open(SEARCH_PATH, "r", encoding="UTF-8") as search_file:
     contents = search_file.read()
@@ -27,6 +29,16 @@ for phrase in phrase_list:
 
 for word in word_list:
     WORD_TRIE.store(word)
+
+
+def main():
+    mode = int(input("Welcome to Ben's autocompleter!\nEnter 1 for word mode or 2 for phrase mode.\n>> "))
+    
+    if mode == 1:
+        input_word = input("Enter a part of a word. I'll finish it.\n>> ")
+
+    if mode == 2:
+        input_phrase = input("Enter part of a phrase. I'll finish it.\n>> ")
 
 
 if __name__ == "__main__":
