@@ -7,8 +7,15 @@ veliebm@gmail.com
 
 """
 
+import trie
+
+SEARCH_PATH = "my_history.txt"
+
+
 def main():
-    pass
+
+    with open(SEARCH_PATH, "r", encoding="UTF-8") as search_file:
+        search_list = search_file.read().splitlines()
 
 
 if __name__ == "__main__":
