@@ -15,8 +15,9 @@ SEARCH_PATH = "my_history.txt"
 def main():
 
     with open(SEARCH_PATH, "r", encoding="UTF-8") as search_file:
-        search_list = search_file.read().splitlines()
-
+        contents = search_file.read()
+        phrase_list = contents.splitlines()
+        word_list = contents.replace("\n", "").split(" ")
 
 if __name__ == "__main__":
     main()
