@@ -26,10 +26,11 @@ class Crawler():
 
         """
 
-        pass
+        self.root_website = website
+        self.excluded_urls = excluded_urls
 
 
-    def get_children(self, website, exclude=set()):
+    def get_children(self, website):
         """
         Finds all URLs on the target website.
 
@@ -58,7 +59,7 @@ class Crawler():
                     (?=[\"'])"""            # URL ends once we find a string end
         url_list = re.findall(regex, url_contents, re.VERBOSE)
 
-        return {url for url in url_list if url not in exclude}
+        return {url for url in url_list if url not in self.excluded_urls}
 
 
 def output_nodes_and_edges(parent_url: str, child_url_list: list):
