@@ -1,4 +1,3 @@
-# Created 7/2/2020 by Benjamin Velie (veliebm@gmail.com).
 """
 Visits all links on a website to map its structure.
 
@@ -6,6 +5,10 @@ Summary
 -------
 This is a website crawler. It completely maps the input website then stores
 the structure in a file named "graph_fetus.txt".
+
+
+Created 7/2/2020 by Ben Velie.
+veliebm@gmail.com
 
 """
 
@@ -41,7 +44,7 @@ class Crawler():
     def crawl(website):
         """
         Recursively crawls the input website.
-        
+
         """
 
         pass
