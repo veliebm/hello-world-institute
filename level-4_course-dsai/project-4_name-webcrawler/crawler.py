@@ -29,7 +29,7 @@ class Crawler():
         pass
 
 
-    def get_children(self, website: str, exclude=set()):
+    def get_children(self, website, exclude=set()):
         """
         Finds all URLs on the target website.
 
