@@ -26,7 +26,7 @@ class Crawler():
 
         """
 
-        self.root_website = website
+        self.root = website
         self.excluded_urls = excluded_urls
 
 
@@ -60,16 +60,6 @@ class Crawler():
         url_list = re.findall(regex, url_contents, re.VERBOSE)
 
         return {url for url in url_list if url not in self.excluded_urls}
-
-
-def output_nodes_and_edges(parent_url: str, child_url_list: list):
-    """Write a parent URL and its children to a file to use in our graph."""
-
-    with open(graph_fetus_filename, "a") as graph_fetus:
-        graph_fetus.write(f"{parent_url} ")
-        for url in child_url_list:
-            graph_fetus.write(f"{url} ")
-        graph_fetus.write("\n")
 
 
 if __name__ == "__main__":
