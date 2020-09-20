@@ -31,6 +31,11 @@ class Crawler():
 
 
     def __repr__(self):
+        """
+        Sets how the object represents itself as a string internally.
+
+        """
+
         return f"Crawler({self.root}, excluded_urls={self.excluded_urls})"
 
 
