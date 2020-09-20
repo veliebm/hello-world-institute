@@ -43,13 +43,13 @@ class Crawler():
         """
         Finds all URLs on the target website.
 
+        Doesn't return URLs excluded at the object attribute level.
+
 
         Parameters
         ----------
         website : str
             Target website to search.
-        exclude : iterable of strings
-            URLs to remove from the search results.
         
 
         Returns
