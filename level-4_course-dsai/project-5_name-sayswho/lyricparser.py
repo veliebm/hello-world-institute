@@ -1,3 +1,5 @@
+#!C:\Users\Ben\miniconda3\envs\helloworld\python.exe
+
 """
 This class parses lyrics.txt and provides tools to clean it up.
 
@@ -73,9 +75,27 @@ class LyricParser():
         Training/dev set encompasses 90% of the data, and test set encompasses 10% of the data.
         """
 
-        training_dev, test = sklearn.model_selection.train_test_split(sequence, train_size=.9)
+        training_dev, test = sklearn.model_selection.train_test_split(sequence, random_state=1, train_size=.9)
 
         return training_dev, test
+
+
+    def cross_validate(self, dataframe):
+        """
+        Returns a dataframe of 10 cross-validated training/dev datasets for the given DataFrame dataset.
+        """
+
+        # Get the INDICES of the data split into split_datasets, a DataFrame.
+        cross_validator = sklearn.model_selection.KFold(n_splits=10, random_state=1, shuffle=True)
+        split_datasets = pandas.DataFrame(cross_validator.split(dataframe), columns=("training", "dev"))
+
+        for column_name in split_datasets:
+            column = split_datasets[column_name]
+            for row in column:
+                indices = row
+                row = self._replace_indices(indices, list(dataframe))
+        
+        return split_datasets
 
 
     def _depunctuate(self, lyric: str) -> str:
@@ -89,3 +109,15 @@ class LyricParser():
             lyric = lyric.replace(character, "")
 
         return lyric
+
+
+    def _replace_indices(self, indices, input_list):
+        """
+        Given a list of indices, return list of all objects at those indices in the input list.
+        """
+
+        return [input_list[i] for i in indices]
+
+
+parser = LyricParser(r"level four_data science\project five_says who\lyrics.txt")
+parser.cross_validate(parser.taylor_train_dev)
