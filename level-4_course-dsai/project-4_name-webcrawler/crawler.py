@@ -11,7 +11,6 @@ the structure in a file named "graph_fetus.txt".
 
 import argparse
 import re
-
 import requests
 
 
@@ -37,6 +36,15 @@ class Crawler():
         """
 
         return f"Crawler({self.root}, excluded_urls={self.excluded_urls})"
+
+
+    def crawl(website):
+        """
+        Recursively crawls the input website.
+        
+        """
+
+        pass
 
 
     def get_children(self, website):
