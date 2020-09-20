@@ -30,6 +30,10 @@ class Crawler():
         self.excluded_urls = excluded_urls
 
 
+    def __repr__(self):
+        return f"Crawler({self.root}, excluded_urls={self.excluded_urls})"
+
+
     def get_children(self, website):
         """
         Finds all URLs on the target website.
