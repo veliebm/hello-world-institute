@@ -22,14 +22,14 @@ GRAPH_FILENAME = "graph_fetus.txt"
 
 class Crawler():
 
-    def __init__(self, website, excluded_urls):
+    def __init__(self, website, excluded=[]):
         """
         Crawls the selected website and recursively stores the structure of all child URLS.
 
         """
 
         self.root = website
-        self.excluded_urls = excluded_urls
+        self.excluded = excluded
 
 
     def __repr__(self):
@@ -41,13 +41,20 @@ class Crawler():
         return f"Crawler({self.root}, excluded_urls={self.excluded_urls})"
 
 
-    def crawl(website):
+    def crawl(self, website):
         """
-        Recursively crawls the input website.
+        Crawls the input website.
 
         """
 
-        pass
+        print(f"Crawling {website}")
+
+        children = self.get_children(website)
+
+        for child in children:
+            self.crawl(child)
+
+        return children
 
 
     def get_children(self, website):
@@ -79,7 +86,16 @@ class Crawler():
                     (?=[\"'])"""            # URL ends once we find a string end
         url_list = re.findall(regex, url_contents, re.VERBOSE)
 
-        return {url for url in url_list if url not in self.excluded_urls}
+        # Filter out unwanted patterns
+        final_url_list = []
+        for pattern in self.excluded:
+            for url in url_list:
+                if not re.match(pattern, url):
+                    final_url_list.append(url)
+
+        return final_url_list
+
+        
 
 
 if __name__ == "__main__":
