@@ -36,12 +36,6 @@ class Trie:
 
         return f"Trie({self.value}, {self.count}, {self.children})"
 
-        if self.parent:
-            return f"Value: {self.value}. Count: {self.count}. Parent: {self.parent.value}. Child values: {child_values}."
-
-        else:
-            return f"Value: {self.value}. Count: {self.count}. Parent: ROOT. Child values: {child_values}."
-
 
     def __getitem__(self, value):
         for trie in self.children:
