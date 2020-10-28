@@ -34,6 +34,8 @@ class Trie:
 
         child_values = {child.value for child in self}
 
+        return f"Trie({self.value}, {self.count}, {self.children})"
+
         if self.parent:
             return f"Value: {self.value}. Count: {self.count}. Parent: {self.parent.value}. Child values: {child_values}."
 
