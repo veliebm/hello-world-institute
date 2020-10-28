@@ -54,7 +54,7 @@ class Trie:
         return len(self.children)
 
 
-    def add(self, value):
+    def birth(self, value):
         """
         Creates/returns a child trie for the target value. If it already exists, returns trie for target value.
 
