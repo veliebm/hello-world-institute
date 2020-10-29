@@ -31,9 +31,6 @@ class Trie:
 
 
     def __repr__(self):
-
-        child_values = {child.value for child in self}
-
         return f"Trie({self.value}, {self.count}, {self.children})"
 
 
@@ -79,7 +76,7 @@ class Trie:
 
         """
         
-        if len(iterable) > 0:
+        if len(iterable) >= 1:
             subtrie = self.birth(iterable[0])
             return subtrie.store(iterable[1:])
         else:
@@ -92,8 +89,33 @@ class Trie:
 
         """
         
-        if len(iterable) > 0:
+        if len(iterable) >= 1:
             subtrie = self[iterable[0]]
             return subtrie.unstore(iterable[1:])
         else:
             return self
+
+
+    def autocomplete(self, results):
+        """
+        Surfs through the child Tries and returns a list of most counted elements.
+ 
+        """
+
+        if len(self) >= 1:
+
+            count = 0
+            popular_child = None
+
+            for child_trie in self:
+                if child_trie.count > count:
+                    count = child_trie.count
+                    popular_child = child_trie
+
+            results.append(popular_child.value)
+
+            return popular_child.autocomplete(results)
+
+        else:
+
+            return results
