@@ -80,7 +80,20 @@ class Trie:
         """
         
         if len(iterable) > 0:
-            subtrie = self.add(iterable[0])
+            subtrie = self.birth(iterable[0])
             return subtrie.store(iterable[1:])
+        else:
+            return self
+
+
+    def unstore(self, iterable):
+        """
+        Attempts to navigate through the Trie, piece by piece of your iterable. Returns the subtrie at the end.
+
+        """
+        
+        if len(iterable) > 0:
+            subtrie = self[iterable[0]]
+            return subtrie.unstore(iterable[1:])
         else:
             return self
