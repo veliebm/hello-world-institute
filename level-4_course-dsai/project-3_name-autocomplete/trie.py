@@ -96,11 +96,14 @@ class Trie:
             return self
 
 
-    def autocomplete(self, results):
+    def autocomplete(self, results=None):
         """
         Surfs through the child Tries and returns a list of most counted elements.
  
         """
+
+        if results is None:
+            results = []
 
         if len(self) >= 1:
 
